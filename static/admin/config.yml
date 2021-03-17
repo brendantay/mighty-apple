@@ -1,0 +1,1677 @@
+backend:
+  name: git-gateway
+  branch: preview
+media_folder: static/images
+public_folder: /images
+collections:
+  - name: config
+    label: Site Configuration
+    files:
+      - name: config
+        label: Site Configuration
+        file: site-metadata.json
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: true
+            hint: Site title
+          - widget: string
+            name: domain
+            label: Domain
+            required: false
+            hint: >-
+              The domain of your site, including the protocol, e.g.
+              https://mysite.com
+          - widget: image
+            name: favicon
+            label: Favicon
+            required: false
+            hint: A square icon that represents your website
+          - widget: select
+            name: color_scheme
+            label: Color scheme
+            required: true
+            default: light
+            hint: The color scheme used for the site
+            options:
+              - light
+              - dark
+          - widget: select
+            name: accent_color
+            label: Accent color
+            required: true
+            default: pink
+            hint: The accent color of the site
+            options:
+              - pink
+              - green
+              - blue
+              - violet
+              - yellow
+          - widget: select
+            name: base_font
+            label: Font
+            required: true
+            default: fraunces
+            options:
+              - fraunces
+              - karla
+              - system-sans
+          - widget: object
+            name: header
+            label: Header Configuration
+            required: false
+            fields:
+              - widget: string
+                name: title
+                label: Header title
+                required: false
+                hint: The title displayed in the header if no logo image added
+              - widget: image
+                name: logo
+                label: Logo
+                required: false
+                hint: The logo image displayed in the header
+              - widget: string
+                name: logo_alt
+                label: Logo alt text
+                required: false
+                hint: The alt text of the logo image
+              - widget: boolean
+                name: has_nav
+                label: Enable navigation menu
+                required: false
+                default: true
+                hint: Display the navigation menu bar in the header
+              - widget: list
+                name: nav_links
+                label: Navigation links
+                required: false
+                hint: A list of navigation links
+                fields:
+                  - widget: string
+                    name: label
+                    label: Label
+                    required: true
+                  - widget: string
+                    name: url
+                    label: URL
+                    required: true
+                    default: '#'
+                  - widget: select
+                    name: style
+                    label: Style
+                    required: true
+                    default: link
+                    options:
+                      - link
+                      - button
+                      - icon
+                  - widget: select
+                    name: icon
+                    label: Icon
+                    required: false
+                    default: dribbble
+                    options:
+                      - dribbble
+                      - facebook
+                      - github
+                      - instagram
+                      - linkedin
+                      - pinterest
+                      - twitter
+                      - vimeo
+                      - youtube
+                  - widget: boolean
+                    name: new_window
+                    label: Make the link open a new tab/window
+                    required: false
+                    default: false
+                  - widget: boolean
+                    name: no_follow
+                    label: No follow
+                    required: false
+                    default: false
+                    hint: Add rel="nofollow" attribute to the link
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: action
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: header
+          - widget: object
+            name: footer
+            label: Footer Configuration
+            required: false
+            fields:
+              - widget: string
+                name: content
+                label: Footer content
+                required: false
+                hint: The copyright text displayed in the footer
+              - widget: list
+                name: links
+                label: Links
+                required: false
+                hint: A list of links displayed in the footer
+                fields:
+                  - widget: string
+                    name: label
+                    label: Label
+                    required: true
+                  - widget: string
+                    name: url
+                    label: URL
+                    required: true
+                    default: '#'
+                  - widget: select
+                    name: style
+                    label: Style
+                    required: true
+                    default: link
+                    options:
+                      - link
+                      - button
+                      - icon
+                  - widget: select
+                    name: icon
+                    label: Icon
+                    required: false
+                    default: dribbble
+                    options:
+                      - dribbble
+                      - facebook
+                      - github
+                      - instagram
+                      - linkedin
+                      - pinterest
+                      - twitter
+                      - vimeo
+                      - youtube
+                  - widget: boolean
+                    name: new_window
+                    label: Make the link open a new tab/window
+                    required: false
+                    default: false
+                  - widget: boolean
+                    name: no_follow
+                    label: No follow
+                    required: false
+                    default: false
+                    hint: Add rel="nofollow" attribute to the link
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: action
+              - widget: boolean
+                name: has_social
+                label: Enable social links
+                required: false
+                default: true
+                hint: Display social links in the footer
+              - widget: list
+                name: social_links
+                label: Social links
+                required: false
+                hint: A list of social links in the footer
+                fields:
+                  - widget: string
+                    name: label
+                    label: Label
+                    required: true
+                  - widget: string
+                    name: url
+                    label: URL
+                    required: true
+                    default: '#'
+                  - widget: select
+                    name: style
+                    label: Style
+                    required: true
+                    default: link
+                    options:
+                      - link
+                      - button
+                      - icon
+                  - widget: select
+                    name: icon
+                    label: Icon
+                    required: false
+                    default: dribbble
+                    options:
+                      - dribbble
+                      - facebook
+                      - github
+                      - instagram
+                      - linkedin
+                      - pinterest
+                      - twitter
+                      - vimeo
+                      - youtube
+                  - widget: boolean
+                    name: new_window
+                    label: Make the link open a new tab/window
+                    required: false
+                    default: false
+                  - widget: boolean
+                    name: no_follow
+                    label: No follow
+                    required: false
+                    default: false
+                    hint: Add rel="nofollow" attribute to the link
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: action
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: footer
+  - name: advanced
+    label: Advanced Pages
+    folder: src/pages
+    create: true
+    extension: md
+    identifier_field: title
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    fields:
+      - widget: string
+        name: title
+        label: Title
+        required: true
+        hint: The title of the page
+      - widget: boolean
+        name: hide_title
+        label: Hide page title
+        required: false
+        default: true
+      - widget: list
+        name: sections
+        label: Sections
+        required: false
+        hint: Page sections
+        types:
+          - name: hero_section
+            widget: object
+            label: Hero Section
+            fields:
+              - widget: string
+                name: section_id
+                label: ID
+                required: false
+                hint: >-
+                  A unique identifier of the section, must not contain
+                  whitespace
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                hint: The title of the section
+              - widget: markdown
+                name: content
+                label: Content
+                required: false
+                hint: The text content of the section
+              - widget: list
+                name: actions
+                label: Action buttons
+                required: false
+                fields:
+                  - widget: string
+                    name: label
+                    label: Label
+                    required: true
+                  - widget: string
+                    name: url
+                    label: URL
+                    required: true
+                    default: '#'
+                  - widget: select
+                    name: style
+                    label: Style
+                    required: true
+                    default: link
+                    options:
+                      - link
+                      - button
+                      - icon
+                  - widget: select
+                    name: icon
+                    label: Icon
+                    required: false
+                    default: dribbble
+                    options:
+                      - dribbble
+                      - facebook
+                      - github
+                      - instagram
+                      - linkedin
+                      - pinterest
+                      - twitter
+                      - vimeo
+                      - youtube
+                  - widget: boolean
+                    name: new_window
+                    label: Make the link open a new tab/window
+                    required: false
+                    default: false
+                  - widget: boolean
+                    name: no_follow
+                    label: No follow
+                    required: false
+                    default: false
+                    hint: Add rel="nofollow" attribute to the link
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: action
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: hero_section
+          - name: content_section
+            widget: object
+            label: Content Section
+            fields:
+              - widget: string
+                name: section_id
+                label: ID
+                required: false
+                hint: >-
+                  A unique identifier of the section, must not contain
+                  whitespace
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                hint: The title of the section
+              - widget: string
+                name: subtitle
+                label: Subtitle
+                required: false
+                hint: The subtitle of the section
+              - widget: image
+                name: image
+                label: Image
+                required: false
+                hint: The image of the section
+              - widget: string
+                name: image_alt
+                label: Image alt text
+                required: false
+                hint: The alt text of the section image
+              - widget: markdown
+                name: content
+                label: Content
+                required: false
+                hint: The text content of the section
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: content_section
+          - name: cta_section
+            widget: object
+            label: CTA Section
+            fields:
+              - widget: string
+                name: section_id
+                label: ID
+                required: false
+                hint: >-
+                  A unique identifier of the section, must not contain
+                  whitespace
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                hint: The title of the section
+              - widget: markdown
+                name: content
+                label: Content
+                required: false
+                hint: The text content of the section
+              - widget: list
+                name: actions
+                label: Action buttons
+                required: false
+                fields:
+                  - widget: string
+                    name: label
+                    label: Label
+                    required: true
+                  - widget: string
+                    name: url
+                    label: URL
+                    required: true
+                    default: '#'
+                  - widget: select
+                    name: style
+                    label: Style
+                    required: true
+                    default: link
+                    options:
+                      - link
+                      - button
+                      - icon
+                  - widget: select
+                    name: icon
+                    label: Icon
+                    required: false
+                    default: dribbble
+                    options:
+                      - dribbble
+                      - facebook
+                      - github
+                      - instagram
+                      - linkedin
+                      - pinterest
+                      - twitter
+                      - vimeo
+                      - youtube
+                  - widget: boolean
+                    name: new_window
+                    label: Make the link open a new tab/window
+                    required: false
+                    default: false
+                  - widget: boolean
+                    name: no_follow
+                    label: No follow
+                    required: false
+                    default: false
+                    hint: Add rel="nofollow" attribute to the link
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: action
+              - widget: image
+                name: image
+                label: Image
+                required: false
+                hint: The image of the section
+              - widget: string
+                name: image_alt
+                label: Image alt text
+                required: false
+                hint: The alt text of the section image
+              - widget: select
+                name: bg_color
+                label: Background color
+                required: true
+                default: none
+                hint: The background color of the section
+                options:
+                  - none
+                  - light
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: cta_section
+          - name: grid_section
+            widget: object
+            label: Grid Section
+            fields:
+              - widget: string
+                name: section_id
+                label: ID
+                required: false
+                hint: >-
+                  A unique identifier of the section, must not contain
+                  whitespace
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                hint: The title of the section
+              - widget: string
+                name: subtitle
+                label: Subtitle
+                required: false
+                hint: The subtitle of the section
+              - widget: select
+                name: col_number
+                label: Columns
+                required: true
+                default: three
+                hint: The number of columns in the grid
+                options:
+                  - two
+                  - three
+              - widget: list
+                name: grid_items
+                label: Grid items
+                required: false
+                fields:
+                  - widget: string
+                    name: title
+                    label: Title
+                    required: false
+                    hint: The title of the grid item
+                  - widget: string
+                    name: subtitle
+                    label: Subtitle
+                    required: false
+                    hint: The subtitle of the grid item
+                  - widget: image
+                    name: image
+                    label: Image
+                    required: false
+                    hint: The image of the grid item
+                  - widget: string
+                    name: image_alt
+                    label: Image alt text
+                    required: false
+                    hint: The alt text of the grid image
+                  - widget: markdown
+                    name: content
+                    label: Content
+                    required: false
+                    hint: The text content of the grid item
+                  - widget: list
+                    name: actions
+                    label: Action buttons
+                    required: false
+                    fields:
+                      - widget: string
+                        name: label
+                        label: Label
+                        required: true
+                      - widget: string
+                        name: url
+                        label: URL
+                        required: true
+                        default: '#'
+                      - widget: select
+                        name: style
+                        label: Style
+                        required: true
+                        default: link
+                        options:
+                          - link
+                          - button
+                          - icon
+                      - widget: select
+                        name: icon
+                        label: Icon
+                        required: false
+                        default: dribbble
+                        options:
+                          - dribbble
+                          - facebook
+                          - github
+                          - instagram
+                          - linkedin
+                          - pinterest
+                          - twitter
+                          - vimeo
+                          - youtube
+                      - widget: boolean
+                        name: new_window
+                        label: Make the link open a new tab/window
+                        required: false
+                        default: false
+                      - widget: boolean
+                        name: no_follow
+                        label: No follow
+                        required: false
+                        default: false
+                        hint: Add rel="nofollow" attribute to the link
+                      - widget: hidden
+                        name: type
+                        label: Object Type
+                        required: true
+                        hint: The type of the object
+                        default: action
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: grid_item
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: grid_section
+          - name: portfolio_section
+            widget: object
+            label: Portfolio Section
+            fields:
+              - widget: string
+                name: section_id
+                label: ID
+                required: false
+                hint: >-
+                  A unique identifier of the section, must not contain
+                  whitespace
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                hint: The title of the section
+              - widget: string
+                name: subtitle
+                label: Subtitle
+                required: false
+                hint: The subtitle of the section
+              - widget: select
+                name: layout_style
+                label: Layout Style
+                required: true
+                default: mosaic
+                hint: The layout style of the projects section
+                options:
+                  - mosaic
+                  - tiles
+              - widget: number
+                name: projects_number
+                label: Number of projects to display
+                required: true
+                valueType: int
+              - widget: string
+                name: view_all_label
+                label: All projects button label
+                required: false
+                hint: The text displayed inside the button
+              - widget: string
+                name: view_all_url
+                label: All projects button URL
+                required: false
+                default: '#'
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: portfolio_section
+          - name: posts_section
+            widget: object
+            label: Posts Section
+            fields:
+              - widget: string
+                name: section_id
+                label: ID
+                required: false
+                hint: >-
+                  A unique identifier of the section, must not contain
+                  whitespace
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                hint: The title of the section
+              - widget: string
+                name: subtitle
+                label: Subtitle
+                required: false
+                hint: The subtitle of the section
+              - widget: number
+                name: posts_number
+                label: The number of posts to display
+                required: true
+                default: 3
+                valueType: int
+              - widget: select
+                name: col_number
+                label: Columns
+                required: true
+                default: three
+                hint: The number of columns in the post grid
+                options:
+                  - two
+                  - three
+              - widget: list
+                name: actions
+                label: Action buttons
+                required: false
+                fields:
+                  - widget: string
+                    name: label
+                    label: Label
+                    required: true
+                  - widget: string
+                    name: url
+                    label: URL
+                    required: true
+                    default: '#'
+                  - widget: select
+                    name: style
+                    label: Style
+                    required: true
+                    default: link
+                    options:
+                      - link
+                      - button
+                      - icon
+                  - widget: select
+                    name: icon
+                    label: Icon
+                    required: false
+                    default: dribbble
+                    options:
+                      - dribbble
+                      - facebook
+                      - github
+                      - instagram
+                      - linkedin
+                      - pinterest
+                      - twitter
+                      - vimeo
+                      - youtube
+                  - widget: boolean
+                    name: new_window
+                    label: Make the link open a new tab/window
+                    required: false
+                    default: false
+                  - widget: boolean
+                    name: no_follow
+                    label: No follow
+                    required: false
+                    default: false
+                    hint: Add rel="nofollow" attribute to the link
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: action
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: posts_section
+          - name: testimonials_section
+            widget: object
+            label: Testimonials Section
+            fields:
+              - widget: string
+                name: section_id
+                label: ID
+                required: false
+                hint: >-
+                  A unique identifier of the section, must not contain
+                  whitespace
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                hint: The title of the section
+              - widget: string
+                name: subtitle
+                label: Subtitle
+                required: false
+                hint: The subtitle of the section
+              - widget: list
+                name: testimonials
+                label: Testimonials
+                required: false
+                fields:
+                  - widget: string
+                    name: author
+                    label: Author
+                    required: true
+                    hint: The author of the testimonial
+                  - widget: string
+                    name: position
+                    label: Author position
+                    required: true
+                    hint: The position of the testimonial author
+                  - widget: image
+                    name: avatar
+                    label: Author image
+                    required: false
+                    hint: The image of the testimonial author
+                  - widget: string
+                    name: avatar_alt
+                    label: Author image alt text
+                    required: false
+                    hint: The alt text of the testimonial author image
+                  - widget: string
+                    name: content
+                    label: Content
+                    required: true
+                    hint: The text content of the testimonial
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: testimonial
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: testimonials_section
+          - name: form_section
+            widget: object
+            label: Form Section
+            fields:
+              - widget: string
+                name: section_id
+                label: ID
+                required: false
+                hint: >-
+                  A unique identifier of the section, must not contain
+                  whitespace
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                hint: The title of the section
+              - widget: string
+                name: subtitle
+                label: Subtitle
+                required: false
+                hint: The subtitle of the section
+              - widget: markdown
+                name: content
+                label: Content
+                required: false
+                hint: The text content of the section
+              - widget: string
+                name: form_id
+                label: Form ID
+                required: true
+                hint: 'A unique identifier of the form, must not contain whitespace'
+              - widget: string
+                name: form_action
+                label: Form action
+                required: false
+                hint: >-
+                  The path of your custom "success" page, if you want to replace
+                  the default success message
+              - widget: list
+                name: form_fields
+                label: Form fields
+                required: false
+                fields:
+                  - widget: select
+                    name: input_type
+                    label: Type
+                    required: true
+                    hint: Type of the form field
+                    options:
+                      - text
+                      - textarea
+                      - email
+                      - tel
+                      - number
+                      - checkbox
+                      - select
+                  - widget: string
+                    name: name
+                    label: Name
+                    required: true
+                    hint: 'The name of the field, submitted with the form'
+                  - widget: string
+                    name: label
+                    label: Label
+                    required: false
+                    hint: 'The caption of the field, shown above the field input'
+                  - widget: string
+                    name: default_value
+                    label: Placeholder or default value
+                    required: false
+                    hint: >-
+                      The placeholder for textual field types or default option
+                      for select field
+                  - widget: list
+                    name: options
+                    label: Options
+                    required: false
+                    hint: A list of options for select field
+                    field:
+                      label: String
+                      name: string
+                      widget: string
+                  - widget: boolean
+                    name: is_required
+                    label: Make the field required
+                    required: false
+                    default: false
+                  - widget: hidden
+                    name: type
+                    label: Object Type
+                    required: true
+                    hint: The type of the object
+                    default: form_field
+              - widget: boolean
+                name: hide_labels
+                label: Hide form field labels
+                required: false
+                default: false
+              - widget: string
+                name: submit_label
+                label: Submit button label
+                required: true
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: form_section
+      - widget: object
+        name: seo
+        label: Seo
+        required: false
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: false
+            default: ''
+            hint: The page title that goes into the <title> tag
+          - widget: string
+            name: description
+            label: Description
+            required: false
+            default: ''
+            hint: >-
+              The page description that goes into the <meta name="description">
+              tag
+          - widget: list
+            name: robots
+            label: Robots
+            required: false
+            hint: The items that go into the <meta name="robots"> tag
+            field:
+              label: Select
+              name: select
+              widget: select
+              options:
+                - all
+                - index
+                - follow
+                - noindex
+                - nofollow
+                - noimageindex
+                - notranslate
+                - none
+          - widget: list
+            name: extra
+            label: Extra
+            required: false
+            hint: >-
+              Additional definition for specific meta tags such as open-graph,
+              twitter, etc.
+            fields:
+              - widget: string
+                name: name
+                label: Name
+                required: false
+                default: ''
+              - widget: string
+                name: value
+                label: Value
+                required: false
+                default: ''
+              - widget: string
+                name: keyName
+                label: Key Name
+                required: false
+                default: name
+              - widget: boolean
+                name: relativeUrl
+                label: Relative Url
+                required: false
+          - widget: hidden
+            name: type
+            label: Object Type
+            required: true
+            hint: The type of the object
+            default: stackbit_page_meta
+      - widget: hidden
+        name: template
+        label: Template
+        required: true
+        default: advanced
+    filter:
+      field: template
+      value: advanced
+  - name: blog
+    label: Blog
+    files:
+      - name: blog
+        label: Blog
+        file: src/pages/blog/index.md
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: true
+            hint: The title of the page
+          - widget: string
+            name: subtitle
+            label: Subtitle
+            required: false
+            hint: The text shown just below the page title
+          - widget: boolean
+            name: hide_title
+            label: Hide page title and subtitle
+            required: false
+            default: false
+          - widget: select
+            name: col_number
+            label: Columns
+            required: true
+            default: three
+            hint: The number of columns in the post grid
+            options:
+              - two
+              - three
+          - widget: object
+            name: seo
+            label: Seo
+            required: false
+            fields:
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                default: ''
+                hint: The page title that goes into the <title> tag
+              - widget: string
+                name: description
+                label: Description
+                required: false
+                default: ''
+                hint: >-
+                  The page description that goes into the <meta
+                  name="description"> tag
+              - widget: list
+                name: robots
+                label: Robots
+                required: false
+                hint: The items that go into the <meta name="robots"> tag
+                field:
+                  label: Select
+                  name: select
+                  widget: select
+                  options:
+                    - all
+                    - index
+                    - follow
+                    - noindex
+                    - nofollow
+                    - noimageindex
+                    - notranslate
+                    - none
+              - widget: list
+                name: extra
+                label: Extra
+                required: false
+                hint: >-
+                  Additional definition for specific meta tags such as
+                  open-graph, twitter, etc.
+                fields:
+                  - widget: string
+                    name: name
+                    label: Name
+                    required: false
+                    default: ''
+                  - widget: string
+                    name: value
+                    label: Value
+                    required: false
+                    default: ''
+                  - widget: string
+                    name: keyName
+                    label: Key Name
+                    required: false
+                    default: name
+                  - widget: boolean
+                    name: relativeUrl
+                    label: Relative Url
+                    required: false
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: stackbit_page_meta
+          - widget: hidden
+            name: template
+            label: Template
+            required: true
+            default: blog
+  - name: portfolio
+    label: Portfolio
+    files:
+      - name: portfolio
+        label: Portfolio
+        file: src/pages/portfolio/index.md
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: true
+            hint: The title of the page
+          - widget: string
+            name: subtitle
+            label: Subtitle
+            required: false
+            hint: The text shown just below the page title
+          - widget: boolean
+            name: hide_title
+            label: Hide page title and subtitle
+            required: false
+            default: false
+          - widget: select
+            name: layout_style
+            label: Layout style
+            required: false
+            default: mosaic
+            hint: The style of the portfolio layout
+            options:
+              - mosaic
+              - tiles
+          - widget: object
+            name: seo
+            label: Seo
+            required: false
+            fields:
+              - widget: string
+                name: title
+                label: Title
+                required: false
+                default: ''
+                hint: The page title that goes into the <title> tag
+              - widget: string
+                name: description
+                label: Description
+                required: false
+                default: ''
+                hint: >-
+                  The page description that goes into the <meta
+                  name="description"> tag
+              - widget: list
+                name: robots
+                label: Robots
+                required: false
+                hint: The items that go into the <meta name="robots"> tag
+                field:
+                  label: Select
+                  name: select
+                  widget: select
+                  options:
+                    - all
+                    - index
+                    - follow
+                    - noindex
+                    - nofollow
+                    - noimageindex
+                    - notranslate
+                    - none
+              - widget: list
+                name: extra
+                label: Extra
+                required: false
+                hint: >-
+                  Additional definition for specific meta tags such as
+                  open-graph, twitter, etc.
+                fields:
+                  - widget: string
+                    name: name
+                    label: Name
+                    required: false
+                    default: ''
+                  - widget: string
+                    name: value
+                    label: Value
+                    required: false
+                    default: ''
+                  - widget: string
+                    name: keyName
+                    label: Key Name
+                    required: false
+                    default: name
+                  - widget: boolean
+                    name: relativeUrl
+                    label: Relative Url
+                    required: false
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: stackbit_page_meta
+          - widget: hidden
+            name: template
+            label: Template
+            required: true
+            default: portfolio
+  - name: page
+    label: Pages
+    folder: src/pages
+    create: true
+    extension: md
+    identifier_field: title
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    fields:
+      - widget: string
+        name: title
+        label: Title
+        required: true
+        hint: The title of the page
+      - widget: string
+        name: subtitle
+        label: Subtitle
+        required: false
+        hint: The text shown just below the page title
+      - widget: image
+        name: image
+        label: Image
+        required: false
+        hint: The image shown below the page title and subtitle
+      - widget: string
+        name: image_alt
+        label: Image alt text
+        required: false
+        hint: The alt text of the image
+      - widget: object
+        name: seo
+        label: Seo
+        required: false
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: false
+            default: ''
+            hint: The page title that goes into the <title> tag
+          - widget: string
+            name: description
+            label: Description
+            required: false
+            default: ''
+            hint: >-
+              The page description that goes into the <meta name="description">
+              tag
+          - widget: list
+            name: robots
+            label: Robots
+            required: false
+            hint: The items that go into the <meta name="robots"> tag
+            field:
+              label: Select
+              name: select
+              widget: select
+              options:
+                - all
+                - index
+                - follow
+                - noindex
+                - nofollow
+                - noimageindex
+                - notranslate
+                - none
+          - widget: list
+            name: extra
+            label: Extra
+            required: false
+            hint: >-
+              Additional definition for specific meta tags such as open-graph,
+              twitter, etc.
+            fields:
+              - widget: string
+                name: name
+                label: Name
+                required: false
+                default: ''
+              - widget: string
+                name: value
+                label: Value
+                required: false
+                default: ''
+              - widget: string
+                name: keyName
+                label: Key Name
+                required: false
+                default: name
+              - widget: boolean
+                name: relativeUrl
+                label: Relative Url
+                required: false
+          - widget: hidden
+            name: type
+            label: Object Type
+            required: true
+            hint: The type of the object
+            default: stackbit_page_meta
+      - widget: hidden
+        name: template
+        label: Template
+        required: true
+        default: page
+      - widget: markdown
+        name: body
+        label: Content
+        required: false
+        hint: Page content
+    filter:
+      field: template
+      value: page
+  - name: post
+    label: Posts
+    folder: src/pages/blog
+    create: true
+    extension: md
+    identifier_field: title
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    fields:
+      - widget: string
+        name: title
+        label: Title
+        required: true
+        hint: The title of the post
+      - widget: string
+        name: subtitle
+        label: Subtitle
+        required: false
+        hint: The text shown just below the post title
+      - widget: date
+        name: date
+        label: Date
+        required: true
+      - widget: image
+        name: thumb_image
+        label: Thumbnail image
+        required: false
+        hint: The image shown in the post grid
+      - widget: string
+        name: thumb_image_alt
+        label: Thumbnail image alt text
+        required: false
+        hint: The alt text of the thumbnail image
+      - widget: image
+        name: image
+        label: Image
+        required: false
+        hint: The image shown in the single post
+      - widget: string
+        name: image_alt
+        label: Image alt text
+        required: false
+        hint: The alt text of the single post image
+      - widget: string
+        name: excerpt
+        label: Excerpt
+        required: false
+        hint: The excerpt of the post displayed in the post grid
+      - widget: object
+        name: seo
+        label: Seo
+        required: false
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: false
+            default: ''
+            hint: The page title that goes into the <title> tag
+          - widget: string
+            name: description
+            label: Description
+            required: false
+            default: ''
+            hint: >-
+              The page description that goes into the <meta name="description">
+              tag
+          - widget: list
+            name: robots
+            label: Robots
+            required: false
+            hint: The items that go into the <meta name="robots"> tag
+            field:
+              label: Select
+              name: select
+              widget: select
+              options:
+                - all
+                - index
+                - follow
+                - noindex
+                - nofollow
+                - noimageindex
+                - notranslate
+                - none
+          - widget: list
+            name: extra
+            label: Extra
+            required: false
+            hint: >-
+              Additional definition for specific meta tags such as open-graph,
+              twitter, etc.
+            fields:
+              - widget: string
+                name: name
+                label: Name
+                required: false
+                default: ''
+              - widget: string
+                name: value
+                label: Value
+                required: false
+                default: ''
+              - widget: string
+                name: keyName
+                label: Key Name
+                required: false
+                default: name
+              - widget: boolean
+                name: relativeUrl
+                label: Relative Url
+                required: false
+          - widget: hidden
+            name: type
+            label: Object Type
+            required: true
+            hint: The type of the object
+            default: stackbit_page_meta
+      - widget: hidden
+        name: template
+        label: Template
+        required: true
+        default: post
+      - widget: markdown
+        name: body
+        label: Content
+        required: false
+        hint: Page content
+    filter:
+      field: template
+      value: post
+  - name: project
+    label: Projects
+    folder: src/pages/portfolio
+    create: true
+    extension: md
+    identifier_field: title
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    fields:
+      - widget: string
+        name: title
+        label: Title
+        required: true
+        hint: The title of the project
+      - widget: string
+        name: subtitle
+        label: Subtitle
+        required: false
+        hint: The text shown just below the project title
+      - widget: date
+        name: date
+        label: Date
+        required: true
+      - widget: image
+        name: thumb_image
+        label: Thumbnail image
+        required: false
+        hint: The image shown in the portfolio grid
+      - widget: string
+        name: thumb_image_alt
+        label: Thumbnail image alt text
+        required: false
+        hint: The alt text of the thumbnail image
+      - widget: list
+        name: sections
+        label: Sections
+        required: false
+        hint: Project sections
+        types:
+          - name: image_section
+            widget: object
+            label: Image Section
+            fields:
+              - widget: image
+                name: image
+                label: Image
+                required: false
+                hint: The image of the section
+              - widget: string
+                name: image_alt
+                label: Image Alt Text
+                required: false
+                hint: The alt text of the section image
+              - widget: string
+                name: caption
+                label: Caption
+                required: false
+                hint: The caption of the image
+              - widget: select
+                name: width
+                label: Width
+                required: true
+                default: regular
+                hint: The width of the image
+                options:
+                  - regular
+                  - wide
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: image_section
+          - name: text_section
+            widget: object
+            label: Text Section
+            fields:
+              - widget: markdown
+                name: content
+                label: Content
+                required: false
+                hint: The text content of the section
+              - widget: hidden
+                name: type
+                label: Object Type
+                required: true
+                hint: The type of the object
+                default: text_section
+      - widget: object
+        name: seo
+        label: Seo
+        required: false
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: false
+            default: ''
+            hint: The page title that goes into the <title> tag
+          - widget: string
+            name: description
+            label: Description
+            required: false
+            default: ''
+            hint: >-
+              The page description that goes into the <meta name="description">
+              tag
+          - widget: list
+            name: robots
+            label: Robots
+            required: false
+            hint: The items that go into the <meta name="robots"> tag
+            field:
+              label: Select
+              name: select
+              widget: select
+              options:
+                - all
+                - index
+                - follow
+                - noindex
+                - nofollow
+                - noimageindex
+                - notranslate
+                - none
+          - widget: list
+            name: extra
+            label: Extra
+            required: false
+            hint: >-
+              Additional definition for specific meta tags such as open-graph,
+              twitter, etc.
+            fields:
+              - widget: string
+                name: name
+                label: Name
+                required: false
+                default: ''
+              - widget: string
+                name: value
+                label: Value
+                required: false
+                default: ''
+              - widget: string
+                name: keyName
+                label: Key Name
+                required: false
+                default: name
+              - widget: boolean
+                name: relativeUrl
+                label: Relative Url
+                required: false
+          - widget: hidden
+            name: type
+            label: Object Type
+            required: true
+            hint: The type of the object
+            default: stackbit_page_meta
+      - widget: hidden
+        name: template
+        label: Template
+        required: true
+        default: project
+    filter:
+      field: template
+      value: project
